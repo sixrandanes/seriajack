@@ -1,0 +1,61 @@
+spring:
+ profiles:
+  active: test
+ jpa:
+  show-sql: false
+  hibernate:
+   ddl: auto  
+ application:
+  name: seriajack
+ boot:
+  admin:
+   url: http://localhost:8080
+   client:
+    serviceUrl: http://localhost:8080
+ jackson: 
+  date-format: dd/MM/yyyy
+management:
+ port: 8080
+ address: 127.0.0.1
+
+#SERVER
+server:
+ port: 8080
+ session-timeout: 300
+ tomcat.uri-encoding: UTF-8
+ 
+---
+#PROFILE LOCAL
+spring:
+ profiles: local
+ datasource:
+  initialize: false
+datasource:
+ seriajack:
+  driverClassName: oracle.jdbc.driver.OracleDriver
+  url: 
+  username:
+  password:
+--- 
+#PROFILE DEV
+spring:
+ profiles: dev
+ datasource:
+  initialize: false
+datasource:
+ seriajack:
+  driverClassName: oracle.jdbc.driver.OracleDriver
+  url: 
+  username:
+  password:
+---  
+#PROFILE TEST
+spring:
+ profiles: test
+ datasource:
+  initialize: false
+  platform: h2
+datasource:
+ test:
+  url: "jdbc:h2:mem:test;USER=SA;MODE=Oracle;DB_CLOSE_ON_EXIT=TRUE;INIT=create schema if not exists SERIAJACK\\;"
+  driverClassName: org.h2.Driver
