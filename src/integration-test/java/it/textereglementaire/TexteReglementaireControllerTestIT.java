@@ -46,7 +46,15 @@ public class TexteReglementaireControllerTestIT {
 				.andExpect(jsonPath("$[0].type", equalTo(TexteType.ARRETE.toString())))
 				.andExpect(jsonPath("$[0].numero", equalTo("T1")))
 				.andExpect(jsonPath("$[0].intitule", equalTo("Texte 1")))
-				// DATE FORMAT TO TEST IS WRONG : dateCreation without annotation J@sonFormat(pattern="")
+				// DATE FORMAT TO TEST IS WRONG :
+
+				// dateCreation (TexteReglementaire) without
+				// @JsonFormat(pattern="dd/MM/yyyy")
+				//
+				// application.yml :
+				// spring:
+				// jackson:
+				// date-format: dd/MM/yyyy
 				.andExpect(jsonPath("$[0].dateCreation", equalTo("19/10/2015")));
 	}
 
