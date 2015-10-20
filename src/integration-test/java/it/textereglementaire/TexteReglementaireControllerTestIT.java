@@ -46,7 +46,7 @@ public class TexteReglementaireControllerTestIT {
 				.andExpect(jsonPath("$[0].type", equalTo(TexteType.ARRETE.toString())))
 				.andExpect(jsonPath("$[0].numero", equalTo("T1")))
 				.andExpect(jsonPath("$[0].intitule", equalTo("Texte 1")))
-				// DATE FORMAT TO TEST
+				// DATE FORMAT TO TEST IS WRONG : dateCreation without annotation J@sonFormat(pattern="")
 				.andExpect(jsonPath("$[0].dateCreation", equalTo("19/10/2015")));
 	}
 
